@@ -1,12 +1,14 @@
-import react from "react"
-import Opinion from "./components/question"
+import React from 'react'
+import Question from './components/question'
 
-let App = () => {
+const App = () => {
+  let styles1 = {
+    backgroundColor : "black",
+    color : "White",
+  } 
   return (
-    <div>
-      <Opinion box = "Hey" ok = "8"/>
-      <Opinion/>
-      <Opinion/>
+    <div style = {styles1} >
+      <Question home = "Home" about = "About" contact = "contact" />
     </div>
   )
 }
