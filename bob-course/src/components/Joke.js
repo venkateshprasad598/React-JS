@@ -1,95 +1,68 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-
-// const Joke = (props) => {
-//     console.log(props)
+// function Conditional(props){
+// if(props.isLoading === true){
 //     return (
-//             <div>
-//                 <h1>I am from {props.state}</h1>
-//                 <h2>And i belong to {props.capital}</h2>
-//             </div>
+//         <h1>
+//             Just a Minute...
+//         </h1>
+//     )
+// } 
+//     return (
+//         <div>
+//             <h1>Here we go</h1>
+//         </div>
 //     )
 // }
 
-
-
-// class Joke extends Component{
-//     render(){
-//         return (
-//             <div>
-//                 <h1>I am from {this.props.state}</h1>
-//                 <h2>And i belong to {this.props.capital}</h2>
-//             </div>
+// function Conditional(props){
+//     return (
+//        <div>
+//            <h1>Here we go</h1>
+//        </div>
 //     )
-//     }
+    // if(props.isLoading == true) {
+    //     return (
+    //         <h1>Just a minute sir...</h1>
+    //     )
+    // }
+    // return (
+    //     <h1>Here is your answer dear friend</h1>
+    // )
 // }
 
 
+// export default Conditional
 
-// class Joke extends Component {
-//     constructor() {
-//         super()
-//         this.state = {
-//             name: "Venkatesh",
-//             age: 23
-//         }
+
+// function Controler(props){
+//     var message
+//     if(props.isLoading === true){
+//         message = "in"
+//     }else{
+//         message = "out"
 //     }
+// if(props.isLoading === true){
 
-//     render() {
-
-//         return (
-//             <div>
-//                 <h1>{this.state.name}</h1>
-//                 <h2>{this.state.age}</h2>
-//             </div>
-//         )
-//     }
-// }
-
-// class Joke extends Component{
-//     constructor(){
-//         super()
-//         this.state = {
-//             isLoggedIn : true
-//         }
-//     }
-
-//     render(){
-//         let wordDisplay;
-
-//         if(this.state.isLoggedIn === true){
-//             wordDisplay = "inside"
-//         } else {
-//             wordDisplay = "outside"
-//         }
-
-//         return(
-//             <h1>You're currenty {wordDisplay}</h1>
-//         )
-//     }
-// }
-
-// class Joke extends Component{
-//     render(){
-//         return(
-//             <div>
-//                 <h1>I am from {this.props.state}</h1>
-//                 <h2>And i belong to {this.props.capital}</h2>
-//             </div>
-//         )
-//     }
-// }
-
-
-
-
-// function Button(){
-//     return(
-//   <div>
-//       <button>Click me</button>
-//   </div>
+//     return (
+//         <h1>You are currently Logged {message}</h1>
+//     )
+// }else{
+//     return (
+//         <h1>You are currently Logged {message}</h1>
 //     )
 // }
+// }
 
-// // export default Joke
-// export default Button
+function Conditional(props){
+if(props.isLogged === true){
+   return (
+       <h1>Just a minute sir we are loading..</h1>
+   )
+} else{
+return(
+    <h1>Here we go</h1>
+)
+}
+
+}
+
+export default Conditional
