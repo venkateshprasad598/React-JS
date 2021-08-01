@@ -156,28 +156,87 @@ import Controler from "./components/Joke"
 //   }
 // }
 
-class App extends Component {
-  constructor() {
+// class App extends Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       isLogged: true
+//     }
+//   }
+ 
+//   componentDidMount(){
+//     setTimeout(() => {
+//       this.setState({
+//         isLogged : false
+//       })
+//     }, 3000);
+//   }
+
+
+//   render() {
+//     return (
+//       <Conditional isLogged = {this.state.isLogged} />
+//     )
+//   }
+// }
+
+
+
+// class App extends Component{
+//   constructor(){
+//     super()
+//     this.state={
+//       myData: {}
+//     }
+//   }
+
+//   componentDidMount(){
+//     fetch("https://swapi.co/api/people/1")
+//     .then(resolve => resolve.json())
+//   .then(data => {
+//     console.log(data);
+//   })
+//   }
+//   render(){
+//     return(
+//       <div>
+//          {this.state.myData.name}
+//       </div>
+//     )
+//   }
+// }
+
+class App extends Component{
+  constructor(){
     super()
     this.state = {
-      isLogged: true
+      firstName : "",
+      isFriendly : true
     }
+    this.fullName = this.fullName.bind(this)
   }
- 
-  componentDidMount(){
-    setTimeout(() => {
-      this.setState({
-        isLogged : false
-      })
-    }, 3000);
+
+  fullName(event){
+    const {name, value, type, checked} = event.target
+   type === "checkbox" ? this.setState({[name] : checked}) : this.setState({
+      [name] : value
+    })
   }
 
 
-  render() {
-    return (
-      <Conditional isLogged = {this.state.isLogged} />
+  render(){
+    return(
+      <div>
+        <input type="text" name="firstName" id="" placeholder = "FirstName Please" onChange = {this.fullName}/>
+        <input type="text" name="lastName" id="" placeholder = "LastName Please" onChange = {this.fullName}/>
+        <textarea value = {"TextArea"} />
+        <h1>{this.state.firstName}</h1>
+        <h1>{this.state.lastName}</h1>
+        <input type="checkbox" name="isFriendly" id="" checked = {this.state.isFriendly} onChange = {this.fullName}/>
+      </div>
     )
   }
 }
+
 
 export default App
