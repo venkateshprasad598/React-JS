@@ -1,242 +1,229 @@
-import React, { Component } from "react"
-import Conditional from "./components/Joke"
-import Controler from "./components/Joke"
+import React from "react"
+import Header from "./components/Header"
+import MemeGenerator from "./components/MemeGenerator"
 
-// class App extends Component{
-// constructor(){
-//   super()
-//   this.state = {
-//     isLoding : true
-//   }
-//   // this.componentDidMount = this.componentDidMount.bind(this)
-// }
-
-// componentDidMount(){
-//   setTimeout(() => {
-//     this.setState({
-//       isLoding : false 
-//     })
-//   }, 3000);
-// }
-
-// render(){
-//   return(
-//     <Conditional isLoading = {this.state.isLoding}/>
-//   )
-// }
-// }
-
-// class App extends Component {
-//   constructor() {
-//     super()
-//     this.state = {
-//       isLoading: true
-//     }
-//   }
-
-//   componentDidMount() {
-//     setTimeout(() => {
-//       this.setState({
-//         isLoading: false
-//       })
-//     }, 3000);
-//   }
-
-
-//   render() {
-//     if (this.state.isLoading === true) {
-//       return (
-//         <h1>Hey wait..</h1>
-//       )
-//     }
-//     return (
-//       <Conditional />
-//     )
-//   }
-// }
-
-
-
-// Consitional Rendering - 2 
-// class App extends Component{
-// constructor(){
-//   super()
-//   this.state = {
-//     unreadMessages : ["spam", "You have a mail from microsoft"]
-//   }
-// }
-
-// render(){
-//   return (
-//     (this.state.unreadMessages.length > 1 && <h1> You have {this.state.unreadMessages.length} Messages</h1>)
-//   )
-// }
-
-
-// }
-
-
-
-
-// class App extends Component{
-//   constructor(){
-//     super()
-//     this.state = {
-//       log : true
-//     }
-//     this.log = this.log.bind(this)
-//   }
-
-//   log(){
-//     if(this.state.log === true){
-
-//       this.setState({
-//         log : false
-//       })
-
-//     }
-
-//     else{
-//       this.setState({
-//         log : true
-//     })
-//   }
-// }
-
-// render() {
-//   var logBtn;
-//   if(this.state.log === true){
-//     logBtn = "Log Out"
-//   }else{
-//     logBtn = "Log In"
-//   }
-//     return(
-//       <div>
-//         <Controler isLoading = {this.state.log}/>
-//         <button onClick = {this.log}>{logBtn}</button>
-//       </div>
-//     )
-// }
-// }
-
-
-// class App extends Component{
-//   constructor(){
-//     super()
-//     this.state = {
-//       isLogged : true
-//     }
-//     this.log = this.log.bind(this)
-//   }
-
-// log(){
-//   if(this.state.isLogged === true){
-//     this.setState({
-//       isLogged : false
-//     })
-//   }else{
-//     this.setState({
-//       isLogged : true
-//     })
-//   }
-// }
-//   render(){
-//   var log
-//   if(this.state.isLogged === true){
-//     log = "Log Out"
-//   }else{ 
-//     log = "Log In"
-//   }
-//     return(
-//       <div>
-//         <Conditional isLoading = {this.state.isLogged}/>
-//         <button onClick = {this.log}>{log} </button>
-//       </div>
-//     )
-//   }
-// }
-
-// class App extends Component {
-//   constructor() {
-//     super()
-//     this.state = {
-//       isLogged: true
-//     }
-//   }
- 
-//   componentDidMount(){
-//     setTimeout(() => {
-//       this.setState({
-//         isLogged : false
-//       })
-//     }, 3000);
-//   }
-
-
-//   render() {
-//     return (
-//       <Conditional isLogged = {this.state.isLogged} />
-//     )
-//   }
-// }
-
-
-
-// class App extends Component{
-//   constructor(){
-//     super()
-//     this.state={
-//       myData: {}
-//     }
-//   }
-
-//   componentDidMount(){
-//     fetch("https://swapi.co/api/people/1")
-//     .then(resolve => resolve.json())
-//   .then(data => {
-//     console.log(data);
-//   })
-//   }
-//   render(){
-//     return(
-//       <div>
-//          {this.state.myData.name}
-//       </div>
-//     )
-//   }
-// }
-
-class App extends Component{
-  constructor(){
-    super()
-    this.state = {
-      firstName : "",
-      isFriendly : true
-    }
-    this.fullName = this.fullName.bind(this)
-  }
-
-  fullName(event){
-    const {name, value, type, checked} = event.target
-   type === "checkbox" ? this.setState({[name] : checked}) : this.setState({
-      [name] : value
-    })
-  }
-
-
-  render(){
-    return(
+function App(){
+  return (
       <div>
-        <input type="text" name="firstName" id="" placeholder = "FirstName Please" onChange = {this.fullName}/>
-        <input type="text" name="lastName" id="" placeholder = "LastName Please" onChange = {this.fullName}/>
-        <textarea value = {"TextArea"} />
-        <h1>{this.state.firstName}</h1>
-        <h1>{this.state.lastName}</h1>
-        <input type="checkbox" name="isFriendly" id="" checked = {this.state.isFriendly} onChange = {this.fullName}/>
+        <Header/>
+        <MemeGenerator/>
       </div>
-    )
-  }
+  )
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   **************************** FORMS *******************************************************************
+
+// class App extends Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       firstName: "",
+//       gender: "",
+//       education: [],
+//       declare: false
+//     }
+//     this.handChange = this.handChange.bind(this)
+//   }
+
+
+//   handChange(event) {
+//     const { name, value, type, checked } = event.target
+//     type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+//   }
+
+//   render() {
+//     return (
+//       <form>
+//         {/* FIRST NAME ***************************/}
+//         <label>
+//           <input
+//             type="text"
+//             name="firstName"
+//             value={this.state.firstName}
+//             onChange={this.handChange}
+//             placeholder="First Name" />
+//         </label><br /><br />
+
+//         {/* LAST NAME *******************************/}
+//         <label>
+//           <input
+//             type="text"
+//             name="lastName"
+//             // value = {this.state.firstName}
+//             onChange={this.handChange}
+//             placeholder="Last Name" />
+//         </label> <br /><br />
+
+
+//         {/* EMAIL **************************************/}
+//         <label>
+//           <input
+//             type="text"
+//             name="Email"
+//             value={this.state.Email}
+//             onChange={this.handChange}
+//             placeholder="Email" />
+//         </label><br /><br />
+
+//         {/* AGE **************************************/}
+//         <label>
+//           <input
+//             type="text"
+//             name="Age"
+//             // value = {this.state.firstName}
+//             onChange={this.handChange}
+//             placeholder="Age" />
+//         </label><br /><br />
+
+//         {/* RADIO **************************************/}
+//         <label>
+//           <input
+//             type="radio"
+//             name="gender"
+//             value={"male"}
+//             checked={this.state.gender === "male"}
+//             onChange={this.handChange} /> Male
+//         </label>
+//         <label>
+//           <input
+//             type="radio"
+//             name="gender"
+//             value={"Female"}
+//             checked={this.state.gender === "Female"}
+//             onChange={this.handChange} /> Female
+//         </label><br /><br />
+
+
+//         {/* SELECT **************************************/}
+//         <select
+//           name="education"
+//           onChange={this.handChange}>
+
+//           <option value="">Education</option>
+//           {/* Value will be displayed on the screen */}
+//           <option value="B.E In Civil Engineering">B.E</option>
+//           <option value="B.Tech">B.Tech</option>
+
+//         </select><br /><br />
+
+//         {/* CHECKBOX **************************************/}
+//         <label>
+//           <input
+//             type="checkbox"
+//             name="declare"
+//             checked={this.state.declare}
+//             onChange={this.handChange} /> I here my declare that all the above information are corret.
+//         </label><br /><br />
+
+//         {/* SUBIT************************************ */}
+//         <button >Submit</button>
+
+//         {/* DEATILES******************************* */}
+
+//         <h1>Your Name : {this.state.firstName} {this.state.lastName}</h1>
+//         <h1>Email : {this.state.Email}</h1>
+//         <h1>Age : {this.state.Age}</h1>
+//         <h1>Sex : {this.state.gender}</h1>
+//         <h1>Eduaction : {this.state.education}</h1>
+//         <h1>declare : {this.state.declare ? "Yes" : "Still not declared"}</h1>
+
+//       </form>
+
+//     )
+//   }
+// }
+
+//   **************************** FORMS *******************************************************************
+
+
+
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
