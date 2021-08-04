@@ -1,17 +1,38 @@
-import React from "react"
-import Header from "./components/Header"
-import MemeGenerator from "./components/MemeGenerator"
+import { Component } from "react";
+import Data from "./components/Data";
 
-function App(){
-  return (
+class App extends Component{
+  state = {
+    person : [
+    {name : "Cali", locatedAt : "US"},
+    {name : "Eiffel", locatedAt : "Paris"},
+    {name : "Tower", locatedAt : "London"}
+    ]
+  }
+
+handleClick = () => {
+  this.setState({
+    person : [
+      {name : "California", locatedAt : "US"},
+      {name : "Eiffel Tower", locatedAt : "Paris"},
+      {name : "Tower Bridge", locatedAt : "London"}
+      ]
+  })
+   
+} 
+
+  render(){
+    return (
       <div>
-        <Header/>
-        <MemeGenerator/>
+        <Data name = {this.state.person[0].name} from = {this.state.person[0].locatedAt} handleClick = {this.handleClick}/>
       </div>
-  )
+    )
+  }
+
+
 }
 
-
+export default App
 
 
 
@@ -205,7 +226,7 @@ function App(){
 
 
 
-export default App
+// export default App
 
 
 
