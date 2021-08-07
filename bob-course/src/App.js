@@ -1,73 +1,132 @@
-import { Component } from "react";
-import Data from "./components/Data";
+// import data from "react"
+import React from "react"
+import { useState, useEffect } from "react"
 
-class App extends Component{
-  state = {
-    person : [
-    {name : "Cali", locatedAt : "US"},
-    {name : "Eiffel", locatedAt : "Paris"},
-    {name : "Tower", locatedAt : "London"}
-    ]
-  }
 
-handleClick = () => {
-  this.setState({
-    person : [
-      {name : "California", locatedAt : "US"},
-      {name : "Eiffel Tower", locatedAt : "Paris"},
-      {name : "Tower Bridge", locatedAt : "London"}
-      ]
-  })
-   
-} 
+const App = () => {
+    const[user, setUser] = useState([])
 
-  render(){
+    const fetchData = async() => {
+        let response = await fetch("https://api.github.com/users")
+        let data = await response.json()
+        setUser(data)
+    }
+
+    useEffect(()=> {
+        fetchData()
+    }, [])
     return (
-      <div>
-        <Data name = {this.state.person[0].name} from = {this.state.person[0].locatedAt} handleClick = {this.handleClick}/>
-      </div>
+        <div>
+           {user.map((myFetchedData) => {
+               const {avatar_url, id, login} = myFetchedData
+               return <div key = {id}>
+                   <img src={avatar_url} alt="" />
+                   <h1>{login}</h1>
+               </div>
+           })}
+        </div>
     )
-  }
-
-
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const App = () => {
+//     const [person, setperson] = useState([])
+
+//     // const getFetch = async () => {
+//     //     let response = await fetch("https://api.github.com/users")
+//     //     let user = await response.json()
+//     //     setperson(user)
+//     // }
+
+//     useEffect(() => {
+//         fetch("https://api.github.com/users").then((response) => {
+//             response.json()
+//         }).then((data) => {
+//             setperson(data)
+//         })
+//         // console.log(person);
+
+//         // getFetch()
+
+//     }, [])
+
+//     return (
+//         <h1></h1>
+//          {person.map((myData)=> {
+//              const {login, url, avatar_url, id} = myData
+
+//              return  <div key = {id}>
+//                      <img src={avatar_url} alt="" />
+//                  </div>
+             
+//          })}
+//         </div>
+//     )
+// }
+
+
+
+
+// const App = () => {
+//     const [people, setpeople] = useState([
+//         { name: "CLICK1 ", id: 1 },
+//         { name: "CLICK2 ", id: 2 },
+//         { name: "CLICK3", id: 3 },
+//     ])
+
+//     const removeItem = (id) => {
+//         let remove = people.filter((ppl) => ppl.id !== id)
+//         setpeople(remove)
+//     }
+
+//     let newPeople = people.map((ppl) =>{
+//         return (
+//         <div key = {ppl.id}>
+//             {ppl.name}
+//             <button onClick = {() => removeItem(ppl.id)}>remove</button>
+//         </div>
+//         )
+//     })
+
+//     return (
+//         <div>
+//             <h1> {newPeople} </h1>
+//             <button onClick = {() => setpeople([])}>Clear All</button>
+//         </div>
+//     )
+// }
+
 export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
