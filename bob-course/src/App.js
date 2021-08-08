@@ -3,28 +3,43 @@ import React from "react"
 import { useState, useEffect } from "react"
 
 const App = () => {
-    const [islogin, setislogin] = useState(true)
-    const [loginBtn, setloginBtn] = useState("Logout")
+    const [toggle, settoggle] = useState(false)
+    
 
-const button = () => {
-    if(loginBtn === "Login"){
-        setloginBtn("Logout")
-        setislogin(true)
-    }else{
-        setloginBtn("Login")
-        setislogin(false)
-    }
 
-}
     return (
         <div>
-            {islogin? <h1>You are loggedin, please here to logout</h1> : <h1>You are logged out, please click below to log in</h1>
-            }
-            <button onClick = {button}>{loginBtn}</button>
+            <button onClick={() => settoggle(!toggle)}>Show/Hide</button>
+            {toggle && <NewApp />}
         </div>
     )
 }
 
+const NewApp = () => {
+    const[size, setsize] = useState(window.innerWidth)
+     
+    useEffect(() => {
+
+        window.addEventListener("resize",checksize)
+
+        return () => {
+
+            window.removeEventListener("resize",checksize)
+        }
+    }, [])  
+
+    const checksize = () => {
+        setsize(window.innerWidths)
+    }
+
+    return (
+        <div>
+           <h1>Window</h1>
+           <h2>Size :{size}</h2>
+        </div>
+    )
+    
+}
 
 
 
@@ -36,7 +51,7 @@ const button = () => {
 //     const [user, setUser] = useState("[]")
 //     const [error, setError] = useState(false)
 
-    
+
 //     const getFetch = async() => {
 //         let response = await fetch("https://api.github.com/userss")
 //         if(response.status >= 200 && response.status < 299) {
@@ -47,8 +62,8 @@ const button = () => {
 //                     return <div>
 //                         {bata.login}
 //                     </div> 
-                        
-                        
+
+
 //                 })
 //                 setUser(newBata)
 //             }, 3000);
