@@ -1,46 +1,33 @@
-// import data from "react"
-import React from "react"
-import { useState, useEffect } from "react"
+import react from "react"
+import { useState } from "react"
 
-const App = () => {
-    const [toggle, settoggle] = useState(false)
+const App= () => {
+    const[user, setuser] = useState([
+        {name : "Tower Bridge", id: 1},
+        {name : "Eiffel Tower", id: 2},
+        {name : "Taj Mahal", id:3},
+    ])
     
-
-
-    return (
-        <div>
-            <button onClick={() => settoggle(!toggle)}>Show/Hide</button>
-            {toggle && <NewApp />}
-        </div>
-    )
-}
-
-const NewApp = () => {
-    const[size, setsize] = useState(window.innerWidth)
-     
-    useEffect(() => {
-
-        window.addEventListener("resize",checksize)
-
-        return () => {
-
-            window.removeEventListener("resize",checksize)
-        }
-    }, [])  
-
-    const checksize = () => {
-        setsize(window.innerWidths)
+    const removeitem = (num) => {
+       let newuser = user.filter((data) => {
+        return data.id !== num
+       })
+       setuser(newuser)
     }
 
     return (
         <div>
-           <h1>Window</h1>
-           <h2>Size :{size}</h2>
+        {user.map((data) => {
+            return <div key = {data.id}>
+                {data.name} <br />
+                <button onClick = {() => removeitem(data.id)}>remove</button>
+            </div>
+        })}
+        <br />
+        <button onClick = {()=> setuser([])}>Remove All</button>
         </div>
     )
-    
 }
-
 
 
 
