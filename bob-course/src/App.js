@@ -2,28 +2,25 @@
 import React from "react"
 import { useState, useEffect } from "react"
 
-
 const App = () => {
-    const[user, setUser] = useState([])
+    const [islogin, setislogin] = useState(true)
+    const [loginBtn, setloginBtn] = useState("Logout")
 
-    const fetchData = async() => {
-        let response = await fetch("https://api.github.com/users")
-        let data = await response.json()
-        setUser(data)
+const button = () => {
+    if(loginBtn === "Login"){
+        setloginBtn("Logout")
+        setislogin(true)
+    }else{
+        setloginBtn("Login")
+        setislogin(false)
     }
 
-    useEffect(()=> {
-        fetchData()
-    }, [])
+}
     return (
         <div>
-           {user.map((myFetchedData) => {
-               const {avatar_url, id, login} = myFetchedData
-               return <div key = {id}>
-                   <img src={avatar_url} alt="" />
-                   <h1>{login}</h1>
-               </div>
-           })}
+            {islogin? <h1>You are loggedin, please here to logout</h1> : <h1>You are logged out, please click below to log in</h1>
+            }
+            <button onClick = {button}>{loginBtn}</button>
         </div>
     )
 }
@@ -32,99 +29,64 @@ const App = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//FETCH DATA ************************************************
 
 // const App = () => {
-//     const [person, setperson] = useState([])
+//     const [isLoading, setisLoading] = useState(true)
+//     const [user, setUser] = useState("[]")
+//     const [error, setError] = useState(false)
 
-//     // const getFetch = async () => {
-//     //     let response = await fetch("https://api.github.com/users")
-//     //     let user = await response.json()
-//     //     setperson(user)
-//     // }
+    
+//     const getFetch = async() => {
+//         let response = await fetch("https://api.github.com/userss")
+//         if(response.status >= 200 && response.status < 299) {
+//             let data = await response.json()
+//             setTimeout(() => {
+//                 setisLoading(false)
+//                 let newBata = data.map((bata) => {
+//                     return <div>
+//                         {bata.login}
+//                     </div> 
+                        
+                        
+//                 })
+//                 setUser(newBata)
+//             }, 3000);
+//         } else {
+//             setTimeout(()=> {
+//                 setisLoading(false)
+//                 setError(true)
+//             }, 3000)
+//     }
+// }
 
 //     useEffect(() => {
-//         fetch("https://api.github.com/users").then((response) => {
-//             response.json()
-//         }).then((data) => {
-//             setperson(data)
-//         })
-//         // console.log(person);
+//         getFetch()
+//         // fetch("https://api.github.com/users").then((response) => response.json()).then((data) => {
+//         //     let bata = data.map((data) => { return <div key = {data.id}>{data.login}</div> })
+//         //     setUser(bata)
+//         // }).catch((error) => console.log(error))
 
-//         // getFetch()
+//     }, []);
 
-//     }, [])
 
-//     return (
-//         <h1></h1>
-//          {person.map((myData)=> {
-//              const {login, url, avatar_url, id} = myData
-
-//              return  <div key = {id}>
-//                      <img src={avatar_url} alt="" />
-//                  </div>
-             
-//          })}
+//     if(isLoading){
+//         return <div>
+//             <h1>Loading...</h1>
 //         </div>
-//     )
-// }
-
-
-
-
-// const App = () => {
-//     const [people, setpeople] = useState([
-//         { name: "CLICK1 ", id: 1 },
-//         { name: "CLICK2 ", id: 2 },
-//         { name: "CLICK3", id: 3 },
-//     ])
-
-//     const removeItem = (id) => {
-//         let remove = people.filter((ppl) => ppl.id !== id)
-//         setpeople(remove)
+//     }else if(error){
+//         return <div>Error..</div>
+//     }else{
+//         return <div>
+//             <h1>{user}</h1>
+//         </div>
 //     }
-
-//     let newPeople = people.map((ppl) =>{
-//         return (
-//         <div key = {ppl.id}>
-//             {ppl.name}
-//             <button onClick = {() => removeItem(ppl.id)}>remove</button>
-//         </div>
-//         )
-//     })
-
-//     return (
-//         <div>
-//             <h1> {newPeople} </h1>
-//             <button onClick = {() => setpeople([])}>Clear All</button>
-//         </div>
-//     )
 // }
+
+
+
+
+
 
 export default App
 
