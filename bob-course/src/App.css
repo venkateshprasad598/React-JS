@@ -1,21 +1,44 @@
-header{
+.Musk{
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: black;
+  width: 30%;
+  border-radius: 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+
+.parent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formParent{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+body{
+  background-color:bisque;
+}
+
+.remove{
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-align-content: center;
-align-items: center;
-background: linear-gradient(to left, rgb(247, 0, 255), rgb(54, 24, 185));
-color: white;
+  align-items: center;
+  justify-content:space-around; 
+  margin-top: 20px;
+  background-color:rgb(176, 188, 189);
+  text-align: center;
+  border-radius: 20px;
 }
 
-header img{
-  /* margin: 50px; */
-  width: 20%;
-  margin-right: 50px;
-  margin-left: 100px;
-  padding: 20px;
+.theParent{
+width: 70%;
 }
 
-.meme{
-  width :50%
-}
