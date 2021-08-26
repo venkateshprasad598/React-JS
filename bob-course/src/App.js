@@ -1,54 +1,39 @@
 import React from "react";
 import { render } from "react-dom";
 import { Component } from "react";
+import App1 from "./App1";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-    this.handleDecrease = this.handleDecrease.bind(this);
-    this.handleIncrease = this.handleIncrease.bind(this);
-  }
-
-  handleIncrease() {
-    this.setState((pre) => {
-      return {
-        count: pre.count + 1,
-      };
-    });
-  }
-  handleDecrease() {
-    this.setState((pre) => {
-      return {
-        count: pre.count - 1,
-      };
-    });
-  }
-
-  componentDidMount() {
-    console.log("Component Mounted");
-    console.log("-------------------");
-  }
-
+  state = {
+    isOn: true,
+    ignoreProps: 1,
+  };
   render() {
-    console.log("render");
     return (
       <div>
-        <h1>Count : {this.state.count}</h1>
-        <button onClick={this.handleIncrease}>increase</button>
-        <button onClick={this.handleDecrease}> Decrease</button>
+        <button
+          disabled={!this.state.isOn}
+          onClick={() => this.setState({ isOn: false })}
+        >
+          on
+        </button>
+        <button
+          disabled={this.state.isOn}
+          onClick={() => this.setState({ isOn: true })}
+        >
+          off
+        </button>
+        <br />
+        <br />
+        <button
+          onClick={() => this.setState({ ignoreProps: Math.random() * 5 })}
+        >
+          Ignore
+        </button>
+
+        {this.state.isOn ? <App1 ignore={this.state.ignoreProps} /> : null}
       </div>
     );
-  }
-  componentDidUpdate(prevProps, prevState, Snapshot) {
-    console.log("Component did update");
-    console.log("-------------------");
-  }
-  componentWillUnmount() {
-    console.log("Component did Unmount");
-    console.log("-------------------");
   }
 }
 
