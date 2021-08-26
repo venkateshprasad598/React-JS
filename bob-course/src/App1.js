@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 
+// LIFE CYCLE METHODS
 class App1 extends Component {
   constructor(props) {
     super(props);
