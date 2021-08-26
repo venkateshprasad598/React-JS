@@ -1,53 +1,58 @@
-import App from "react"
+import React from "react";
+import { render } from "react-dom";
+import { Component } from "react";
 
-const App = () => {
-    
-    reyurn (
-        <div>
-            <h1>Hello</h1>
-        </div>
-    )
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+    this.handleDecrease = this.handleDecrease.bind(this);
+    this.handleIncrease = this.handleIncrease.bind(this);
+  }
+
+  handleIncrease() {
+    this.setState((pre) => {
+      return {
+        count: pre.count + 1,
+      };
+    });
+  }
+  handleDecrease() {
+    this.setState((pre) => {
+      return {
+        count: pre.count - 1,
+      };
+    });
+  }
+
+  componentDidMount() {
+    console.log("Component Mounted");
+    console.log("-------------------");
+  }
+
+  render() {
+    console.log("render");
+    return (
+      <div>
+        <h1>Count : {this.state.count}</h1>
+        <button onClick={this.handleIncrease}>increase</button>
+        <button onClick={this.handleDecrease}> Decrease</button>
+      </div>
+    );
+  }
+  componentDidUpdate(prevProps, prevState, Snapshot) {
+    console.log("Component did update");
+    console.log("-------------------");
+  }
+  componentWillUnmount() {
+    console.log("Component did Unmount");
+    console.log("-------------------");
+  }
 }
-export default App
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default App;
 
 // const App = () => {
 //     const [travel, settravel] = useState({
@@ -58,7 +63,6 @@ export default App
 //         ]
 //     })
 //     const [istrue, setistrue] = useState(false)
-   
 
 // const handleClick = () => {
 //     setistrue(true)
@@ -73,8 +77,8 @@ export default App
 
 // let data = travel.person.map((data) => {
 //         return <div key = {data.id}> <br />
-//             <input type="text" 
-//                     name="{data.name}" 
+//             <input type="text"
+//                     name="{data.name}"
 //                     onChange = {(e) => settravel({...travel.person, [e.target.name] : e.target.name})} />
 //             <h1>Hey I am think of going to {data.name}</h1>
 //         </div>
@@ -84,46 +88,12 @@ export default App
 //     <div>
 
 //         <button onClick={handleClick}>My Travel List</button>
-        
+
 //     {istrue ? data : null}
-            
-        
+
 //     </div>
 // )
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import data from "./components/data"
 // import { useState } from "react"
@@ -161,8 +131,6 @@ export default App
 //     const remove = (num) => {
 //         setperson(person.filter((data) => data.id !== num))
 //     }
-
-
 
 //     return (
 //         <div className = "theParent">
@@ -220,38 +188,6 @@ export default App
 //     )
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const reducer = (state, action) => {
 //     if(action.type === "MYTYPE"){
 //         const newitems = [...state.people, action.ok]
@@ -284,7 +220,7 @@ export default App
 // }
 
 // const initialState = {
-//     people : [], 
+//     people : [],
 //     isNotEntered : false
 // }
 
@@ -321,7 +257,6 @@ export default App
 //             }
 //         }
 
-
 //         // const remove = () => {
 //         //     dispatch({remove : "removed"})
 //         // }
@@ -333,7 +268,7 @@ export default App
 //                 <div>
 //                     <label htmlFor="name">firstName :</label>
 //                     <input type="text"
-//                              name="firstName" 
+//                              name="firstName"
 //                              id="name"
 //                              value = {person.firstName}
 //                              onChange = {handleChange}  />
@@ -342,7 +277,7 @@ export default App
 //                 <div>
 //                     <label htmlFor="email">email:</label>
 //                     <input type="text"
-//                              name="email" 
+//                              name="email"
 //                              id="email"
 //                              value = {person.email}
 //                              onChange = {handleChange}  />
@@ -351,7 +286,7 @@ export default App
 //                 <div>
 //                     <label htmlFor="age">Age :</label>
 //                     <input type="text"
-//                              name="age" 
+//                              name="age"
 //                              id="age"
 //                              value = {person.age}
 //                              onChange = {handleChange} />
@@ -373,42 +308,7 @@ export default App
 //     )
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// USEREDUCER 
+// USEREDUCER
 // var data = [
 //     {name : "Venkates Prasad", id : 1},
 //     {name : "Eiffel Tower", id : 2},
@@ -425,7 +325,6 @@ export default App
 //     }
 // }
 
-
 // const initialState = {
 //     people : [],
 //     isNotEntered : false,
@@ -436,7 +335,6 @@ export default App
 //     const [person, setperson] = useState("")
 //     const [state, dispatch] = useReducer(reducer, initialState)
 
-
 //     const handleClick = (e) =>{
 //         e.preventDefault()
 //         if(person){
@@ -445,14 +343,13 @@ export default App
 //         }
 //     }
 
-
 //     return (
 //         <div>
 //             {state.isNotEntered && <p>{state.myText}</p>}
 //             <form action="">
 //                 <div>
 //                     <label htmlFor="">Name : </label>
-//                     <input type="text" 
+//                     <input type="text"
 //                         name="name"
 //                         id="name"
 //                         value = {person}
@@ -469,11 +366,6 @@ export default App
 //         </div>
 //     )
 // }
-
-
-
-
-
 
 // CONTROLLED FORMS
 // const App = () => {
@@ -502,8 +394,8 @@ export default App
 
 //                 <div>
 //                     <label htmlFor="name">Name : </label>
-//                     <input type="text" 
-//                             name="name" 
+//                     <input type="text"
+//                             name="name"
 //                             id="name"
 //                             value = {person.name}
 //                             onChange = {handleChange}/>
@@ -511,8 +403,8 @@ export default App
 
 //                 <div>
 //                     <label htmlFor="email">Email : </label>
-//                     <input type="email" 
-//                             name="email" 
+//                     <input type="email"
+//                             name="email"
 //                             id="email"
 //                             value = {person.email}
 //                             onChange = {handleChange}/>
@@ -520,8 +412,8 @@ export default App
 
 //                 <div>
 //                     <label htmlFor="age">Age : </label>
-//                     <input type="number" 
-//                             name="age" 
+//                     <input type="number"
+//                             name="age"
 //                             id="age"
 //                             value = {person.age}
 //                             onChange = {handleChange}/>
@@ -542,21 +434,12 @@ export default App
 //     )
 // }
 
-
-
-
-
-
-
-
-
 //FETCH DATA ************************************************
 
 // const App = () => {
 //     const [isLoading, setisLoading] = useState(true)
 //     const [user, setUser] = useState("[]")
 //     const [error, setError] = useState(false)
-
 
 //     const getFetch = async() => {
 //         let response = await fetch("https://api.github.com/userss")
@@ -567,8 +450,7 @@ export default App
 //                 let newBata = data.map((bata) => {
 //                     return <div>
 //                         {bata.login}
-//                     </div> 
-
+//                     </div>
 
 //                 })
 //                 setUser(newBata)
@@ -590,7 +472,6 @@ export default App
 
 //     }, []);
 
-
 //     if(isLoading){
 //         return <div>
 //             <h1>Loading...</h1>
@@ -604,43 +485,7 @@ export default App
 //     }
 // }
 
-
-
-
-
-
-export default Radium(App)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// export default Radium(App)
 
 //   **************************** FORMS *******************************************************************
 
@@ -655,7 +500,6 @@ export default Radium(App)
 //     }
 //     this.handChange = this.handChange.bind(this)
 //   }
-
 
 //   handChange(event) {
 //     const { name, value, type, checked } = event.target
@@ -684,7 +528,6 @@ export default Radium(App)
 //             onChange={this.handChange}
 //             placeholder="Last Name" />
 //         </label> <br /><br />
-
 
 //         {/* EMAIL **************************************/}
 //         <label>
@@ -723,7 +566,6 @@ export default Radium(App)
 //             checked={this.state.gender === "Female"}
 //             onChange={this.handChange} /> Female
 //         </label><br /><br />
-
 
 //         {/* SELECT **************************************/}
 //         <select
@@ -766,27 +608,4 @@ export default Radium(App)
 
 //   **************************** FORMS *******************************************************************
 
-
-
 // export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
