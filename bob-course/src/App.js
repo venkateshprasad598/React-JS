@@ -26,7 +26,7 @@ class App extends Component {
         <br />
         <br />
         <button
-          onClick={() => this.setState({ ignoreProps: Math.random() * 5 })}
+          onClick={() => this.setState({ ignoreProps: Math.random() * 100 })}
         >
           Ignore
         </button>
