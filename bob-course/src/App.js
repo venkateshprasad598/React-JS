@@ -1,44 +1,96 @@
-// LIFE CYCLE METHODS
 import React from "react";
 import { render } from "react-dom";
 import { Component } from "react";
-import App1 from "./App1";
 
 class App extends Component {
-  state = {
-    isOn: true,
-    ignoreProps: 1,
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+    };
+  }
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
   };
+
   render() {
     return (
       <div>
-        <button
-          disabled={!this.state.isOn}
-          onClick={() => this.setState({ isOn: false })}
-        >
-          on
-        </button>
-        <button
-          disabled={this.state.isOn}
-          onClick={() => this.setState({ isOn: true })}
-        >
-          off
-        </button>
-        <br />
-        <br />
-        <button
-          onClick={() => this.setState({ ignoreProps: Math.random() * 100 })}
-        >
-          Ignore
-        </button>
-
-        {this.state.isOn ? <App1 ignore={this.state.ignoreProps} /> : null}
+        <form>
+          <input
+            type="text"
+            placeholder="Enter You First Name"
+            onChange={this.handleChange}
+            name="firstName"
+            value={this.state.firstName}
+          />{" "}
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Enter You LastName"
+            onChange={this.handleChange}
+            name="lastName"
+            value={this.state.lastName}
+          />{" "}
+          <br />
+          <br />
+          <input
+            type="checkbox"
+            placeholder="Enter You LastName"
+            onChange={this.handleChange}
+            name="lastName"
+            value={this.state.lastName}
+          />
+        </form>
+        <h1>FirstName : {this.state.firstName}</h1>
+        <h1>LastName : {this.state.lastName}</h1>
       </div>
     );
   }
 }
 
 export default App;
+
+// class App extends Component {
+//   state = {
+//     isOn: true,
+//     ignoreProps: 1,
+//   };
+//   render() {
+//     return (
+//       <div>
+//         <button
+//           disabled={!this.state.isOn}
+//           onClick={() => this.setState({ isOn: false })}
+//         >
+//           on
+//         </button>
+//         <button
+//           disabled={this.state.isOn}
+//           onClick={() => this.setState({ isOn: true })}
+//         >
+//           off
+//         </button>
+//         <br />
+//         <br />
+//         <button
+//           onClick={() => this.setState({ ignoreProps: Math.random() * 100 })}
+//         >
+//           Ignore
+//         </button>
+
+//         {this.state.isOn ? <App1 ignore={this.state.ignoreProps} /> : null}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
 
 // const App = () => {
 //     const [travel, settravel] = useState({
