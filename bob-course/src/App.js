@@ -1,89 +1,37 @@
 import React from "react";
 import { render } from "react-dom";
+import Persons from "./components/Person";
 import { Component } from "react";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      myBox: false,
-      gender: "",
-      favColor: "blue",
+      person: [
+        { name: "Venkatesh", id: 1 },
+        { name: "Prasad", id: 2 },
+        { name: "Elon", id: 3 },
+      ],
     };
   }
-  handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    type === "checkbox"
-      ? this.setState({ [name]: checked })
-      : this.setState({ [name]: value });
+
+  handleChange = (e, num) => {
+    const Index = this.state.person.findIndex((data) => data.id === num);
+    console.log(Index);
+    const newPerson = [...this.state.person];
+    newPerson[Index].name = e.target.value;
+    this.setState({ ...this.state, person: newPerson });
   };
+
   render() {
     return (
       <div>
-        <form>
-          <input
-            type="text"
-            placeholder="Enter You First Name"
-            onChange={this.handleChange}
-            name="firstName"
-            value={this.state.firstName}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="text"
-            placeholder="Enter You LastName"
-            onChange={this.handleChange}
-            name="lastName"
-            value={this.state.lastName}
-          />
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            name="myBox"
-            checked={this.state.myBox}
-            onChange={this.handleChange}
-          />{" "}
-          <br />
-          <br />
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            checked={this.state.gender === "male"}
-            onChange={this.handleChange}
-          />
-          male
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            checked={this.state.gender === "female"}
-            onChange={this.handleChange}
-          />
-          feMale <br />
-          <br />
-          <select onChange={this.handleChange} name="favColor">
-            <option value="null">Select Color</option>
-            <option value="red">Red</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-          </select>
-        </form>
-        <h1>FirstName : {this.state.firstName}</h1>
-        <h1>LastName : {this.state.lastName}</h1>
-        <h1>{this.state.favColor}</h1>
-        <h1>Sex : {this.state.gender}</h1>
+        <Persons name={this.state.person} handleChange={this.handleChange} />
       </div>
     );
   }
 }
-
 export default App;
-
 // class App extends Component {
 //   state = {
 //     isOn: true,
