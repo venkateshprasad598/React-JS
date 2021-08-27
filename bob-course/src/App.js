@@ -8,15 +8,17 @@ class App extends Component {
     this.state = {
       firstName: "",
       lastName: "",
+      myBox: false,
+      gender: "",
+      favColor: "blue",
     };
   }
   handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
+    const { name, value, type, checked } = e.target;
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
   };
-
   render() {
     return (
       <div>
@@ -36,19 +38,45 @@ class App extends Component {
             onChange={this.handleChange}
             name="lastName"
             value={this.state.lastName}
-          />{" "}
+          />
           <br />
           <br />
           <input
             type="checkbox"
-            placeholder="Enter You LastName"
+            name="myBox"
+            checked={this.state.myBox}
             onChange={this.handleChange}
-            name="lastName"
-            value={this.state.lastName}
+          />{" "}
+          <br />
+          <br />
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={this.state.gender === "male"}
+            onChange={this.handleChange}
           />
+          male
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={this.state.gender === "female"}
+            onChange={this.handleChange}
+          />
+          feMale <br />
+          <br />
+          <select onChange={this.handleChange} name="favColor">
+            <option value="null">Select Color</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
         </form>
         <h1>FirstName : {this.state.firstName}</h1>
         <h1>LastName : {this.state.lastName}</h1>
+        <h1>{this.state.favColor}</h1>
+        <h1>Sex : {this.state.gender}</h1>
       </div>
     );
   }
