@@ -1,37 +1,47 @@
 import React from "react";
-import { render } from "react-dom";
-import Persons from "./components/Person";
-import { Component } from "react";
-
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      person: [
-        { name: "Venkatesh", id: 1 },
-        { name: "Prasad", id: 2 },
-        { name: "Elon", id: 3 },
-      ],
-    };
-  }
-
-  handleChange = (e, num) => {
-    const Index = this.state.person.findIndex((data) => data.id === num);
-    console.log(Index);
-    const newPerson = [...this.state.person];
-    newPerson[Index].name = e.target.value;
-    this.setState({ ...this.state, person: newPerson });
-  };
-
-  render() {
-    return (
-      <div>
-        <Persons name={this.state.person} handleChange={this.handleChange} />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
+};
 export default App;
+
+// import React from "react";
+// import { render } from "react-dom";
+// import Persons from "./components/Person";
+// import { Component } from "react";
+
+// class App extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       person: [
+//         { name: "Venkatesh", id: 1 },
+//         { name: "Prasad", id: 2 },
+//         { name: "Elon", id: 3 },
+//       ],
+//     };
+//   }
+
+//   handleChange = (e, num) => {
+//     const Index = this.state.person.findIndex((data) => data.id === num);
+//     console.log(Index);
+//     const newPerson = [...this.state.person];
+//     newPerson[Index].name = e.target.value;
+//     this.setState({ ...this.state, person: newPerson });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <Persons name={this.state.person} handleChange={this.handleChange} />
+//       </div>
+//     );
+//   }
+// }
+// export default App;
 // class App extends Component {
 //   state = {
 //     isOn: true,
@@ -109,98 +119,113 @@ export default App;
 // )
 // }
 
-// import data from "./components/data"
-// import { useState } from "react"
+// import data from "./components/data";
+// import { useState } from "react";
 
 // const App = () => {
-//     const [person, setperson] = useState({ firstName: "", email: "" })
-//     const [people, setpeople] = useState([])
-//     const [isNotEntered, setisNotEntered] = useState(false)
-//     // const remove = num => {
-//     //     return setperson(person.filter((data) => {
-//     //         return data.id !== num
-//     //     }))
-//     // }
-//     const handleChange = (event) => {
-//         const {name, value} = event.target
-//         const newperson = {...person, [name] : value}
-//         setperson(newperson)
+// const [person, setperson] = useState({ firstName: "", email: "" });
+//   const [people, setpeople] = useState([]);
+//   const [isNotEntered, setisNotEntered] = useState(false);
+//   // const remove = num => {
+//   //     return setperson(person.filter((data) => {
+//   //         return data.id !== num
+//   //     }))
+//   // }
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     const newperson = { ...person, [name]: value };
+//     setperson(newperson);
+//   };
+
+//   const handleClick = (e) => {
+//     e.preventDefault();
+//     if (person.firstName && person.email) {
+//       let newpeople = { ...person, id: new Date().getTime() };
+//       console.log(newpeople);
+//       setpeople([newpeople]);
+//       setperson({ firstName: "", email: "" });
+//     } else {
+//       setisNotEntered(true);
+//       setTimeout(() => {
+//         setisNotEntered(false);
+//       }, 2000);
 //     }
+//   };
 
-//     const handleClick = (e) => {
-//         e.preventDefault()
-//         if(person.firstName && person.email){
-//             let newpeople = {...person, id : new Date().getTime()}
-//             console.log(newpeople);
-//             setpeople([newpeople])
-//             setperson({ firstName: "", email: "" })
-//         }else{
-//             setisNotEntered(true)
-//             setTimeout(() => {
-//             setisNotEntered(false)
-//             }, 2000);
-//         }
-//     }
+//   const remove = (num) => {
+//     setperson(person.filter((data) => data.id !== num));
+//   };
 
-//     const remove = (num) => {
-//         setperson(person.filter((data) => data.id !== num))
-//     }
+//   return (
+//     <div className="theParent">
+//       <form action="">
+//         {isNotEntered && <p>PLease Enter Details</p>}
+//         <div className="row formParent">
+//           <div className="form-group col-lg-4" style={{ marginTop: "30px" }}>
+//             <input
+//               type="text"
+//               name="firstName"
+//               id="firstName"
+//               value={person.firstName}
+//               onChange={handleChange}
+//               className="form-control"
+//               placeholder="First Name"
+//             />
+//           </div>
+//           <br />
 
-//     return (
-//         <div className = "theParent">
-//             <form action="">
+//           <div className="form-group col-lg-4 " style={{ marginTop: "10px" }}>
+//             <input
+//               type="email"
+//               name="email"
+//               id="eamil"
+//               value={person.email}
+//               onChange={handleChange}
+//               className="form-control"
+//               placeholder="email"
+//             />
+//           </div>
 
-//                 {isNotEntered && <p>PLease Enter Details</p>}
-//                 <div className="row formParent" >
-
-//                     <div className="form-group col-lg-4" style = {{marginTop : "30px"}}>
-//                         <input type="text"
-//                             name="firstName"
-//                             id="firstName"
-//                             value={person.firstName}
-//                             onChange={handleChange}
-//                             className="form-control"
-//                             placeholder = "First Name" />
-//                     </div><br />
-
-//                     <div className="form-group col-lg-4 " style = {{marginTop : "10px"}}>
-//                         <input type="email"
-//                             name="email"
-//                             id="eamil"
-//                             value={person.email}
-//                             onChange={handleChange}
-
-//                             className="form-control"
-//                             placeholder = "email" />
-//                     </div>
-
-//                 <button onClick = {handleClick} className = "btn btn-danger" style = {{width : "10%", marginTop : "20px"}}>Add</button>
-//                 </div>
-
-//                 <div className = "removeParent">
-//                     {people.map((data) => {
-//                         return <div key = {data.id} className = "remove">
-//                            <h1>{data.firstName}</h1>
-//                            <p>{data.email}</p>
-//                            <button onClick = {() => remove(data.id)} className = "btn btn-danger">remove</button>
-//                         </div>
-//                     })}
-//                 </div>
-
-//             </form>
+//           <button
+//             onClick={handleClick}
+//             className="btn btn-danger"
+//             style={{ width: "10%", marginTop: "20px" }}
+//           >
+//             Add
+//           </button>
 //         </div>
 
-//         // <div className = "parent">
-//         //     {person.map((data) => {
-//         //         return <div key = {data.id} className = "Musk">
-//         //         {data.name} <br />
-//         //         <button onClick = {() => remove(data.id)} className = "btn btn-danger btn-sm" style = {{marginTop:"10px", marginBottom : "10px"}}>remove</button>
-//         //         </div>
-//         //     })}
-//         //     <button className = "btn btn-danger" onClick = {() => setperson([])}>Clear All</button>
-//         // </div>
-//     )
-// }
+//         <div className="removeParent">
+//           {people.map((data) => {
+//             return (
+//               <div key={data.id} className="remove">
+//                 <h1>{data.firstName}</h1>
+//                 <p>{data.email}</p>
+//                 <button
+//                   onClick={() => remove(data.id)}
+//                   className="btn btn-danger"
+//                 >
+//                   remove
+//                 </button>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </form>
+//     </div>
+
+//     // <div className = "parent">
+//     //     {person.map((data) => {
+//     //         return <div key = {data.id} className = "Musk">
+//     //         {data.name} <br />
+//     //         <button onClick = {() => remove(data.id)} className = "btn btn-danger btn-sm" style = {{marginTop:"10px", marginBottom : "10px"}}>remove</button>
+//     //         </div>
+//     //     })}
+//     //     <button className = "btn btn-danger" onClick = {() => setperson([])}>Clear All</button>
+//     // </div>
+//   );
+// };
+// export default App;
 
 // const reducer = (state, action) => {
 //     if(action.type === "MYTYPE"){
