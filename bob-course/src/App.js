@@ -71,13 +71,20 @@ const App = () => {
   };
 
   const handleChanges = (num) => {
-    const newSetPerson = { ...person, id: new Date().getTime() };
-    setpeople([...people, newSetPerson]);
-    console.log([...people, newSetPerson]);
-
     let newObject = people.findIndex((data) => data.id === num);
     console.log(newObject);
-    console.log(person);
+
+    const newSetPerson = { ...person, id: new Date().getTime() };
+    // setpeople([...people, newSetPerson]);
+    // let peopleArray = [...people, newSetPerson];
+    // console.log(people);
+    let newPeople = people;
+    console.log(newPeople);
+    let index = newPeople[newObject];
+    index = person;
+    console.log(index);
+    setpeople([index]);
+    // console.log(person);
     console.log(people);
   };
 
