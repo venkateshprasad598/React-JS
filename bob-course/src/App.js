@@ -1,8 +1,69 @@
 import React from "react";
+import { useState } from "react";
 const App = () => {
+  const [person, setPerson] = useState({ name: "", email: "" }); // object is created to help value to know current state
+  const [people, setpeople] = useState([]);
+  console.log(person);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const newPerson = { ...person, [name]: value };
+    console.log(newPerson);
+    setPerson(newPerson);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (person.name && person.email) {
+      const newSetPerson = [{ ...person, id: 1 }];
+      setpeople(newSetPerson);
+      setPerson({ ...person, name: "", email: "" }); // Value place a important role here
+    }
+  };
+
+  const handleRemove = (num) => {
+    const filter = people.filter((data) => {
+      return data.id !== num;
+    });
+    setpeople(filter);
+  };
+  const handleEdit = (num) => {};
+
   return (
     <div>
-      <h1>Hello</h1>
+      <form>
+        <div>
+          <input
+            type="text"
+            name="name"
+            onChange={handleChange}
+            value={person.name}
+            placeholder="FirstName"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="email"
+            value={person.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+        </div>
+        <button onClick={handleClick} type="submit">
+          SUBMIT
+        </button>
+      </form>
+      {people.map((data) => {
+        const { name, email, id } = data;
+        return (
+          <div key={id}>
+            <h1>{name}</h1>
+            <p>{email}</p>
+            <button onClick={() => handleRemove(id)}>Remove</button>
+            <button onClick={() => handleEdit(id)}>Edit</button>
+          </div>
+        );
+      })}
     </div>
   );
 };
