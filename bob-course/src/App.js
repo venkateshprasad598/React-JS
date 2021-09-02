@@ -1,40 +1,10 @@
 import React from "react";
 import { useState } from "react";
 const App = () => {
-  // const [person, setperson] = useState({ name: "" });
-  // const [people, setpeople] = useState([]);
-  // const handleClick = (e) => {
-  //   setperson({ ...person, [e.target.name]: e.target.value });
-  //   console.log({ ...person, [e.target.name]: e.target.value });
-  // };
-
-  // return (
-  //   <div>
-  //     <input
-  //       type="text"
-  //       onChange={handleClick}
-  //       value={person.name}
-  //       name="name"
-  //     />
-  //     <button
-  //       onClick={(e) => {
-  //         e.preventDefault();
-  //         let newPerson = { ...person, id: Math.random() };
-  //         setpeople([...people, newPerson]);
-  //         console.log([...people, newPerson]);
-  //         setperson({ name: "" });
-  //       }}
-  //     >
-  //       Sub
-  //     </button>
-  //     {people.map((data) => {
-  //       return <div key={data.id}>{data.name}</div>;
-  //     })}
-  //   </div>
-  // );
   const [person, setPerson] = useState({ name: "", email: "" }); // object is created to help value to know current state
   const [people, setpeople] = useState([]);
   const [isEdit, setEdit] = useState(false);
+  const [isChanges, setChanges] = useState(false);
   // console.log(person);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,31 +31,35 @@ const App = () => {
   };
   const handleEdit = (num) => {
     setEdit(true);
+    setChanges(true);
     // console.log(num);
     let myObject = people.findIndex((data) => data.id === num);
     console.log(myObject);
     let newPeople = people[myObject];
     console.log(newPeople);
+    console.log(newPeople);
     setPerson(newPeople);
-    // console.log([...people]);
+    console.log([...people]);
   };
 
   const handleChanges = (num) => {
     let newObject = people.findIndex((data) => data.id === num);
     console.log(newObject);
 
-    const newSetPerson = { ...person, id: new Date().getTime() };
+    // const newSetPerson = { ...person, id: new Date().getTime() };
     // setpeople([...people, newSetPerson]);
     // let peopleArray = [...people, newSetPerson];
     // console.log(people);
-    let newPeople = people;
+    let newPeople = [...people];
+
+    // newPeople[newObject] =
+
     console.log(newPeople);
-    let index = newPeople[newObject];
-    index = person;
-    console.log(index);
-    setpeople([index]);
+    newPeople[newObject] = person;
+    setpeople(newPeople);
     // console.log(person);
-    console.log(people);
+    console.log(newPeople);
+    setPerson({ name: "", email: "" });
   };
 
   return (
@@ -109,13 +83,16 @@ const App = () => {
             placeholder="Email"
           />
         </div>
-        {isEdit ? (
+        {/* {isEdit ? (
           <button type="submit">Save Changes</button>
         ) : (
           <button onClick={handleClick} type="submit">
             Submit
           </button>
-        )}
+        )} */}
+        <button onClick={handleClick} type="submit">
+          Submit
+        </button>
       </form>
       {people.map((data) => {
         const { name, email, id } = data;
@@ -125,7 +102,10 @@ const App = () => {
             <p>{email}</p>
             <button onClick={() => handleRemove(id)}>Remove</button>
             <button onClick={() => handleEdit(id)}>Edit</button>
-            <button onClick={() => handleChanges(id)}>Changes</button>
+
+            {isChanges && (
+              <button onClick={() => handleChanges(id)}>Changes</button>
+            )}
           </div>
         );
       })}
