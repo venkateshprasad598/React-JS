@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Order.css";
 
-function Order() {
+const Details = () => {
   return (
-    <div className="order">
+    <div>
       <Link to="/">Home</Link>
-      <h1>Orders</h1>
+      <h1>Details</h1>
     </div>
   );
-}
+};
 
-export default Order;
+export default Details;

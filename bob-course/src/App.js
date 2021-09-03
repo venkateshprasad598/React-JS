@@ -5,7 +5,8 @@ import Home from "./components/Home";
 import Header from "./components/Header/Header";
 import Aside from "./components/Aside/Aside";
 import Product from "./components/Product/Product";
-import Order from "./components/Orders/order";
+import Order from "./components/Orders/Order";
+import Details from "./components/Details/Details";
 
 const App = () => {
   return (
@@ -28,10 +29,20 @@ const App = () => {
             </div>
           </Route>
 
+          <Route path="/details">
+            <Header />
+            <div className="app__asideProduct">
+              <Aside />
+              <Details />
+            </div>
+          </Route>
+
           <Route className="/">
             <Header />
-            <Aside />
-            <Home />
+            <div className="app__asideProduct">
+              <Aside />
+              <Home />
+            </div>
           </Route>
         </Switch>
       </div>
