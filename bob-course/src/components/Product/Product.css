@@ -1,0 +1,29 @@
+.product {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: rgb(228, 227, 227);
+  width: 100%;
+}
+
+.productDetails {
+  display: flex;
+  height: 300px;
+  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+  width: 70%;
+}
+.productDetails__img {
+  height: 150px;
+  object-fit: contain;
+  width: 100%;
+  /* background-color: blue; */
+  padding: 20px;
+}
+.productDetails__description {
+  width: 500px;
+}

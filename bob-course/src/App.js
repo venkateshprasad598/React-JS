@@ -1,118 +1,170 @@
 import React from "react";
-import { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Home from "./components/Home";
+import Header from "./components/Header/Header";
+import Aside from "./components/Aside/Aside";
+import Product from "./components/Product/Product";
+import Order from "./components/Orders/order";
+
 const App = () => {
-  const [person, setPerson] = useState({ name: "", email: "" }); // object is created to help value to know current state
-  const [people, setpeople] = useState([]);
-  const [isEdit, setEdit] = useState(false);
-  const [isChanges, setChanges] = useState(false);
-  // console.log(person);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    const newPerson = { ...person, [name]: value };
-    // console.log(newPerson);
-    setPerson(newPerson);
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (person.name && person.email) {
-      const newSetPerson = { ...person, id: new Date().getTime() };
-      setpeople([...people, newSetPerson]);
-      setPerson({ ...person, name: "", email: "" }); // Value place a important role here
-      console.log([...people, newSetPerson]);
-    }
-  };
-
-  const handleRemove = (num) => {
-    const filter = people.filter((data) => {
-      return data.id !== num;
-    });
-    setpeople(filter);
-  };
-  const handleEdit = (num) => {
-    setEdit(true);
-    setChanges(true);
-    // console.log(num);
-    let myObject = people.findIndex((data) => data.id === num);
-    console.log(myObject);
-    let newPeople = people[myObject];
-    console.log(newPeople);
-    console.log(newPeople);
-    setPerson(newPeople);
-    console.log([...people]);
-  };
-
-  const handleChanges = (num) => {
-    let newObject = people.findIndex((data) => data.id === num);
-    console.log(newObject);
-
-    // const newSetPerson = { ...person, id: new Date().getTime() };
-    // setpeople([...people, newSetPerson]);
-    // let peopleArray = [...people, newSetPerson];
-    // console.log(people);
-    let newPeople = [...people];
-
-    // newPeople[newObject] =
-
-    console.log(newPeople);
-    newPeople[newObject] = person;
-    setpeople(newPeople);
-    // console.log(person);
-    console.log(newPeople);
-    setPerson({ name: "", email: "" });
-  };
-
   return (
-    <div>
-      <form>
-        <div>
-          <input
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={person.name}
-            placeholder="FirstName"
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="email"
-            value={person.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-        </div>
-        {/* {isEdit ? (
-          <button type="submit">Save Changes</button>
-        ) : (
-          <button onClick={handleClick} type="submit">
-            Submit
-          </button>
-        )} */}
-        <button onClick={handleClick} type="submit">
-          Submit
-        </button>
-      </form>
-      {people.map((data) => {
-        const { name, email, id } = data;
-        return (
-          <div key={id}>
-            <h1>{name}</h1>
-            <p>{email}</p>
-            <button onClick={() => handleRemove(id)}>Remove</button>
-            <button onClick={() => handleEdit(id)}>Edit</button>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/products" className="app__products">
+            <Header />
+            <div className="app__asideProduct">
+              <Aside />
+              <Product />
+            </div>
+          </Route>
 
-            {isChanges && (
-              <button onClick={() => handleChanges(id)}>Changes</button>
-            )}
-          </div>
-        );
-      })}
-    </div>
+          <Route path="/orders">
+            <Header />
+            <div className="app__asideProduct">
+              <Aside />
+              <Order />
+            </div>
+          </Route>
+
+          <Route className="/">
+            <Header />
+            <Aside />
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 export default App;
+
+{
+  /* <Route path="/checkout">
+{/* <Header /> */
+}
+{
+  /* <Checkout /> */
+}
+// </Route> */}
+
+//*******************Operations********************************** */
+// import React from "react";
+// import { useState } from "react";
+// const App = () => {
+//   const [person, setPerson] = useState({ name: "", email: "" }); // object is created to help value to know current state
+//   const [people, setpeople] = useState([]);
+//   const [isEdit, setEdit] = useState(false);
+//   const [isChanges, setChanges] = useState(false);
+//   // console.log(person);
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     const newPerson = { ...person, [name]: value };
+//     // console.log(newPerson);
+//     setPerson(newPerson);
+//   };
+
+//   const handleClick = (e) => {
+//     e.preventDefault();
+//     if (person.name && person.email) {
+//       const newSetPerson = { ...person, id: new Date().getTime() };
+//       setpeople([...people, newSetPerson]);
+//       setPerson({ ...person, name: "", email: "" }); // Value place a important role here
+//       console.log([...people, newSetPerson]);
+//     }
+//   };
+
+//   const handleRemove = (num) => {
+//     const filter = people.filter((data) => {
+//       return data.id !== num;
+//     });
+//     setpeople(filter);
+//   };
+//   const handleEdit = (num) => {
+//     setEdit(true);
+//     setChanges(true);
+//     // console.log(num);
+//     let myObject = people.findIndex((data) => data.id === num);
+//     console.log(myObject);
+//     let newPeople = people[myObject];
+//     console.log(newPeople);
+//     console.log(newPeople);
+//     setPerson(newPeople);
+//     console.log([...people]);
+//   };
+
+//   const handleChanges = (num) => {
+//     let newObject = people.findIndex((data) => data.id === num);
+//     console.log(newObject);
+
+//     // const newSetPerson = { ...person, id: new Date().getTime() };
+//     // setpeople([...people, newSetPerson]);
+//     // let peopleArray = [...people, newSetPerson];
+//     // console.log(people);
+//     let newPeople = [...people];
+
+//     // newPeople[newObject] =
+
+//     console.log(newPeople);
+//     newPeople[newObject] = person;
+//     setpeople(newPeople);
+//     // console.log(person);
+//     console.log(newPeople);
+//     setPerson({ name: "", email: "" });
+//   };
+
+//   return (
+//     <div>
+//       <form>
+//         <div>
+//           <input
+//             type="text"
+//             name="name"
+//             onChange={handleChange}
+//             value={person.name}
+//             placeholder="FirstName"
+//           />
+//         </div>
+//         <div>
+//           <input
+//             type="text"
+//             name="email"
+//             value={person.email}
+//             onChange={handleChange}
+//             placeholder="Email"
+//           />
+//         </div>
+//         {/* {isEdit ? (
+//           <button type="submit">Save Changes</button>
+//         ) : (
+//           <button onClick={handleClick} type="submit">
+//             Submit
+//           </button>
+//         )} */}
+//         <button onClick={handleClick} type="submit">
+//           Submit
+//         </button>
+//       </form>
+//       {people.map((data) => {
+//         const { name, email, id } = data;
+//         return (
+//           <div key={id}>
+//             <h1>{name}</h1>
+//             <p>{email}</p>
+//             <button onClick={() => handleRemove(id)}>Remove</button>
+//             <button onClick={() => handleEdit(id)}>Edit</button>
+
+//             {isChanges && (
+//               <button onClick={() => handleChanges(id)}>Changes</button>
+//             )}
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
+// export default App;
 
 // import React from "react";
 // import { render } from "react-dom";

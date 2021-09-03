@@ -1,0 +1,21 @@
+/* .app {
+  background: linear-gradient(to bottom, blue, white);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+.app__products {
+  display: flex;
+  flex-direction: column;
+}
+.app__asideProduct {
+  display: flex;
+}
+
+.appProduct__Component {
+  background-color: blue;
+}

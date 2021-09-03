@@ -1,0 +1,20 @@
+.aside {
+  height: 100vh;
+  background: rgb(157, 98, 235);
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+
+.aside__products {
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.aside__names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
