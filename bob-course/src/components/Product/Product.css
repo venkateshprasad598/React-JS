@@ -53,3 +53,34 @@
 .productDetails__description {
   width: 500px;
 }
+
+@media (max-width: 1300px) {
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productDetails__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 500ms;
+  }
+
+  .productDetails__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .productDetails {
+    background-color: rgb(252, 243, 243);
+    width: 400px;
+  }
+  .productDetails__description {
+    width: 300px;
+  }
+}

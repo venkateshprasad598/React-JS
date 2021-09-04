@@ -1,14 +1,16 @@
 .details {
+  height: 88.5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   background-color: rgb(226, 224, 224);
 }
 
 .details__backButton {
   margin-right: auto;
+  margin-bottom: 20px;
   padding: 10px;
 }
 
