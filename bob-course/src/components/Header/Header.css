@@ -2,4 +2,29 @@
   height: 80px;
   background: linear-gradient(to right, blue, rgb(250, 5, 238));
   color: white;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.header__form {
+  display: flex;
+}
+
+.header__name {
+  font-size: 30px;
+  font-weight: 800;
+  margin-left: 100px;
+}
+
+.header__input {
+  margin-left: 1000px;
+  width: 100%;
+}
+
+@media (max-width: 1300px) {
+  .header__input {
+    margin-left: 30px;
+    width: 100%;
+  }
 }
