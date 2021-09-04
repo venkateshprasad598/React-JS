@@ -1,0 +1,51 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(226, 224, 224);
+}
+
+.details__backButton {
+  margin-right: auto;
+  padding: 10px;
+}
+
+.details__all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 70%;
+  border-radius: 10px;
+}
+
+.details__description {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.details__img {
+  height: 300px;
+  padding: 20px;
+  object-fit: contain;
+}
+
+.details__name {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.details__price {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.details__button {
+  margin-bottom: 10px;
+}

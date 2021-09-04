@@ -7,10 +7,15 @@ const Aside = () => {
     <div className="aside">
       <div className="aside__names">
         <Link to="/products" className="aside__products">
-          Products
+          <button className="btn btn-primary asideName__products">
+            Products
+          </button>
         </Link>
-        <Link to="/orders" className="aside__products">
-          Orders
+
+        <Link to="/products" className="aside__products">
+          <button className="btn btn-primary asideName__products">
+            Orders
+          </button>
         </Link>
       </div>
     </div>

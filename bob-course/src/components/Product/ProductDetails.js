@@ -39,15 +39,6 @@ const products = [
   },
   {
     category_name: "sample",
-    id: 1003408,
-    image:
-      "https://d1g9x4k1po579z.cloudfront.net/media/1/product/cover/II1UO3IsttZy56eY2f6ao2uh6Ylw03bx4Jrv9DvA.jpeg",
-    name: "sample",
-    price: 12,
-    unit: "Nos",
-  },
-  {
-    category_name: "sample",
     id: 1003409,
     image:
       "https://d1g9x4k1po579z.cloudfront.net/media/1/product/cover/aJ1TrakGWcT5J7rDiX8VhMyWZ3dtBbVnrvtXR88Y.jpeg",

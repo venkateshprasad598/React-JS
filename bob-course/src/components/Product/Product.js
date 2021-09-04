@@ -3,53 +3,69 @@ import { Link } from "react-router-dom";
 import "./Product.css";
 import products from "./ProductDetails";
 import { useState } from "react";
-import Details from "../Details/Details";
-import { myContext } from "../Context/StateProvider";
+// import Details from "../Details/Details";
+import { useStateProvider } from "../Context/StateProvider";
+// import Example from "../Example";
 
 const Product = () => {
-  const [myDetails, setMyDetails] = useState(true);
+  const [state, dispatch] = useStateProvider();
+  // const [state, setState] = useState("");
 
-  const handleClick = (num) => {
+  const handleClick = (id, name, price, image, description) => {
     // console.log(num);
     // let index = products.findIndex((data) => data.id === num);
     // console.log(index);
-    // let myProduct = [...products];
+    // let myProduct = products;
     // let myProductIndex = myProduct[index];
-    // console.log(myProductIndex);
-    // setMyDetails(myProductIndex);
-    // console.log(myDetails);
+    // console.log(myProductIndex.id);
+    dispatch({
+      type: "PRODUCT",
+      items: {
+        id: id,
+        name: name,
+        price: price,
+        image: image,
+        description: description,
+      },
+    });
+    // setState(name);
+    // console.log(state);
   };
 
   return (
     <div className="product">
-      <Link to="/">Home</Link>
-      <h1>Product</h1>
+      <Link to="/" className="product__home">
+        <button className="btn btn-primary">Back to Home</button>
+      </Link>
+      <h1 className="product__trending">TRENDING</h1>
 
-      <Link to="/details">
-        {products.map((data) => {
-          const { name, image, description, price, id } = data;
-          return (
-            <div
-              className="productDetails"
-              key={id}
-              onClick={() => handleClick(id)}
-            >
+      {products.map((data) => {
+        const { name, image, description, price, id, category_name } = data;
+        return (
+          <Link
+            to="/details"
+            onClick={() => handleClick(id, name, price, image, description)}
+            key={id}
+            className="productDetails__link"
+          >
+            <div className="productDetails">
               <img src={image} className="productDetails__img" />
               <div className="productDetails__description">
-                <h1>{name}</h1>
+                <h1>{name || category_name}</h1>
                 <div>
                   <h5>Description : </h5>
-                  {description}
+                  {description ||
+                    "A special Mixed fruit Mojito from Coffee Republic. This is going to be your favorite."}
                 </div>
                 <h3>Price : {price}$</h3>
+                {/* <button>Add</button> */}
               </div>
             </div>
-          );
-        })}
-      </Link>
+          </Link>
+        );
+      })}
     </div>
   );
-  console.log(myDetails);
 };
 
 export default Product;
