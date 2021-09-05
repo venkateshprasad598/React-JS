@@ -3,7 +3,6 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  //   console.log(action);
   switch (action.type) {
     case "PRODUCT":
       const productDetails = [action.items];

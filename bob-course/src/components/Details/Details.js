@@ -5,7 +5,7 @@ import "./Details.css";
 import { useStateProvider } from "../Context/StateProvider";
 
 const Details = () => {
-  const [state, dispatch] = useStateProvider();
+  const [state] = useStateProvider();
 
   console.log("Hello");
   return (
@@ -23,7 +23,7 @@ const Details = () => {
               <h1 className="details__name">{data.name}</h1>
               <div>
                 {" "}
-                Description :{" "}
+                Description :
                 {data.description ||
                   "A special Mixed fruit Mojito from Coffee Republic. This is going to be your favourite."}
               </div>

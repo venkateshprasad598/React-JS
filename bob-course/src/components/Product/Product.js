@@ -2,22 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Product.css";
 import products from "./ProductDetails";
-import { useState } from "react";
-// import Details from "../Details/Details";
 import { useStateProvider } from "../Context/StateProvider";
-// import Example from "../Example";
 
 const Product = () => {
   const [state, dispatch] = useStateProvider();
-  // const [state, setState] = useState("");
 
   const handleClick = (id, name, price, image, description) => {
-    // console.log(num);
-    // let index = products.findIndex((data) => data.id === num);
-    // console.log(index);
-    // let myProduct = products;
-    // let myProductIndex = myProduct[index];
-    // console.log(myProductIndex.id);
     dispatch({
       type: "PRODUCT",
       items: {
@@ -28,8 +18,6 @@ const Product = () => {
         description: description,
       },
     });
-    // setState(name);
-    // console.log(state);
   };
 
   return (
